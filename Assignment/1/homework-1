@@ -1,0 +1,14 @@
+#!/bin/bash
+
+question=$1
+issub=$2
+
+case "$question" in
+
+1) exec ./1.out ;;
+
+2) exec ./2.out ;;
+
+3) echo "$2" | ./3.out ;;
+
+esac

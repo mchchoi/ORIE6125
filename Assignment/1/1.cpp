@@ -24,18 +24,18 @@ int main()
     conv = (int)(double)z;
   }
 
-  cout << "The value old is " << old << endl;
-  cout << "Largest int is " << numeric_limits<int>::max() << endl;
-  cout << "The value old is " << old << endl;
-  cout << "The value z is " << z << endl;
-  cout << "The value conv is " << conv << endl;
+  cout << old << endl;
+  // cout << "Largest int is " << numeric_limits<int>::max() << endl;
+  // cout << "The value old is " << old << endl;
+  //cout << "The value z is " << z << endl;
+  //cout << "The value conv is " << conv << endl;
  
 
-  if ( old+1 != (int)(double)(old+1) )
-  {
-  	cout << "The value old is " << old << endl;
-  	cout << "The value z is " << z << endl;
-  	cout << "The value conv is " << conv << endl;
-  }
+  //if ( old+1 != (int)(double)(old+1) )
+  //{
+  //	cout << "The value old is " << old << endl;
+  //	cout << "The value z is " << z << endl;
+  // 	cout << "The value conv is " << conv << endl;
+  //}
   return 0; 
 }
