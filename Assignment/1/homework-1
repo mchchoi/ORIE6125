@@ -11,4 +11,6 @@ case "$question" in
 
 3) echo "$2" | ./3.out ;;
 
+8) ./8.sh
+
 esac
