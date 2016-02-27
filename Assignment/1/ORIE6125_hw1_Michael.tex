@@ -43,10 +43,14 @@
 \section{Floating-point arithmetics}
 
 \begin{enumerate}
-	\setcounter{enumi}{1}
+
+	\item An IEEE 64-bit floating-point value has 53 bits of mantissa (1 bit is implied), so the largest integer that can be represented as a 64-bit floating point WITHOUT GAP is $2^{53}$. $2^{53}+1$ cannot be stored, because it exceeds the 52-bits mantissa allowance. Precisely, the spacing between $2^{52}$ and $2^{53}$ is $1$ (i.e. every integers in this range can be represented under the IEEE 64-bit system), while the spacing between $2^{53}$ and $2^{54}$ is $2$ (i.e. every even integers between this range can be represented). Run ``./homework-1 1" to check out the answer!
+
+		Alternatively, the largest integer that can be represented is $\mathrm{DBL}\_\mathrm{MAX}$ in C++. The largest possible exponent is $1023$, and the largest mantissa is $1 + \sum_{i=1}^{52} 2^{-i} = 2 - 2^{-52}$, so the largest possible integer is  $\mathrm{DBL}\_\mathrm{MAX} = (2 - 2^{-52})2^{1023} = (2^{53}-1)\times2^{971}$.
+
 	\item An example of subnormal number is $2^{-1023}$. Alternatively, run "./homework-1 2" to check out the answer!
 	
-	
+	\item Denote z to be the number you want to check. Run "./homework-1 3 z" to check out the answer!	
 \end{enumerate}
 
 \section{Cache efficiency}

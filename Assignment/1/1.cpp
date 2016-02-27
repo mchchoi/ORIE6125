@@ -1,41 +1,19 @@
 #include <iostream>
-#include <limits>
+#include <math.h>
 using namespace std;
 
 int main()
 {
-  int z = 2;
-  int conv = (int)(double)z;
-  int old = z;
+  double x = 2;
 
-  while (z == conv && z > 0)
-  {
-    old = z;
-    z = 2*z;
-    conv = (int)(double)z;
-  }
+  while (x+1 != x)
+	x = x * 2;
   
-  z = old;
-  conv = (int)(double)z;
-  while (z == conv && z > 0)
-  {
-    old = z;;
-    z++;
-    conv = (int)(double)z;
-  }
+  while (x == x - 1)
+	x--;
 
-  cout << old << endl;
-  // cout << "Largest int is " << numeric_limits<int>::max() << endl;
-  // cout << "The value old is " << old << endl;
-  //cout << "The value z is " << z << endl;
-  //cout << "The value conv is " << conv << endl;
- 
+  if (x == (long long int)x)
+	cout << x << endl;
 
-  //if ( old+1 != (int)(double)(old+1) )
-  //{
-  //	cout << "The value old is " << old << endl;
-  //	cout << "The value z is " << z << endl;
-  // 	cout << "The value conv is " << conv << endl;
-  //}
   return 0; 
 }
