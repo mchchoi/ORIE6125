@@ -1,0 +1,21 @@
+{%- extends 'base.html' -%}
+
+{% block content %}
+  <h1>
+   Heap 
+  </h1>
+
+  <p>
+    This URL can be used to heapify a list of query parameters. Send a
+    POST request along with a comma-separated list of numbers in the
+    "values" parameter.
+  </p>
+  <p>
+    You can try this with the form below.
+
+	<form action="/heap/<name>" method="post">
+  	<input type="text" name="values" size=10></input>
+  	<input type="submit"></input>
+	</form>
+  </p>
+{% endblock content %}
