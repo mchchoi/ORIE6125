@@ -317,43 +317,46 @@ def heap_post(name):
         heapdict[name] = els
         
     return "Successfully inserted!"
-
+  
 @app.route('/heap/<name>/pop', methods=['GET'])
 def heap_pop(name):
     if name in heapdict.keys():
+        tmp = name
         v = heapdict[name]
         name = BinHeap_Array()
-        name.heapify(heapdict[name])
-        return name.remove()
+        name.heapify(v)
+        out = str(name.remove())
+        heapdict[tmp] = name._print()
+        return out
     else:
         return "There is no heap with desired name", 400
-    
+ 
 @app.route('/heap/<name>/peak', methods=['GET'])
 def heap_peak(name):
     if name in heapdict.keys():
         v = heapdict[name]
         name = BinHeap_Array()
-        name.heapify(heapdict[name])
-        return name.peek()
+        name.heapify(v)
+        return str(name.peek())
     else:
         return "There is no heap with desired name", 400
 
 @app.route('/heap/time/array', methods=['GET'])
-def heap_timearray(name):
-    LENGTH = request.args.get('length')
-    SEED = request.args.get('seed')
-    if (not isinstance(LENGTH,int)):
-        return "length should be an integer", 400
+def heap_timearray():
+    LENGTH = request.args.get('length', type=int)
+    SEED = request.args.get('seed', type=int)
+    #if (not isinstance(LENGTH,int)):
+    #    return "length should be an integer", 400
     
     (insert_time, remove_time) = BinHeap_Array().rand(LENGTH,SEED)
     return "The insertion time is " + str(insert_time) + '\n' + "The popping time is " + str(remove_time)
 
 @app.route('/heap/time/pointer', methods=['GET'])
-def heap_timeptr(name):
-    LENGTH = request.args.get('length')
-    SEED = request.args.get('seed')
-    if (not isinstance(LENGTH,int)):
-        return "length should be an integer", 400
+def heap_timeptr():
+    LENGTH = request.args.get('length', type=int)
+    SEED = request.args.get('seed', type=int)
+    #if (not isinstance(LENGTH,int)):
+    #    return "length should be an integer", 400
     
     (insert_time, remove_time) = BinHeap_Ptr().rand(LENGTH,SEED)
     return "The insertion time is " + str(insert_time) + '\n' + "The popping time is " + str(remove_time)
