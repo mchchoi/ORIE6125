@@ -20,19 +20,19 @@ Run the webapp locally
 ----------------------
 
 ```
-python heap.py
+python webapp/heap.py
 ```
 
 Unit test for the webapp
 ------------------------
 
-### Test GET/project
+### Test GET/project ###
 
 ```
 curl -X GET http://127.0.0.1:5000/project
 ```
 
-### Test GET /heap/<name> and POST /heap/<name>
+### Test GET /heap/<name> and POST /heap/<name> ###
 
 ```
 curl -X GET http://127.0.0.1:5000/heap/2
@@ -44,7 +44,7 @@ curl -X POST http://127.0.0.1:5000/heap/2 -d values="2,9,100,6,7,1,4"
 curl -X GET http://127.0.0.1:5000/heap/2
 ```
 
-### Test GET /heap/<name>/peak
+### Test GET /heap/\<name>/peak
 
 ```
 curl -X GET http://127.0.0.1:5000/heap/2/peak
