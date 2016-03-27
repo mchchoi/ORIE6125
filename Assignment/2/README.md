@@ -32,7 +32,7 @@ Unit test for the webapp
 curl -X GET http://127.0.0.1:5000/project
 ```
 
-### Test GET /heap/<name> and POST /heap/<name> ###
+### Test GET /heap/\<name> and POST /heap/\<name> ###
 
 ```
 curl -X GET http://127.0.0.1:5000/heap/2
@@ -44,13 +44,13 @@ curl -X POST http://127.0.0.1:5000/heap/2 -d values="2,9,100,6,7,1,4"
 curl -X GET http://127.0.0.1:5000/heap/2
 ```
 
-### Test GET /heap/\<name>/peak
+### Test GET /heap/\<name>/peak ###
 
 ```
 curl -X GET http://127.0.0.1:5000/heap/2/peak
 ```
 
-### Test GET /heap/<name>/pop
+### Test GET /heap/<name>/pop ###
 
 ```
 curl -X GET http://127.0.0.1:5000/heap/2/pop
@@ -65,7 +65,7 @@ curl -X GET http://127.0.0.1:5000/heap/2/pop
 curl -X GET http://127.0.0.1:5000/heap/2
 ```
 
-### Test GET /heap/time/array
+### Test GET /heap/time/array ###
 
 ```
 curl --request GET 'http://127.0.0.1:5000/heap/time/array?length=100&seed=200'
@@ -80,7 +80,7 @@ curl --request GET 'http://127.0.0.1:5000/heap/time/array?length=0&seed=200'
 curl --request GET 'http://127.0.0.1:5000/heap/time/array?length=100'
 ```
 
-### Test GET /heap/time/pointer
+### Test GET /heap/time/pointer ###
 
 ```
 curl --request GET 'http://127.0.0.1:5000/heap/time/pointer?length=100&seed=200'
