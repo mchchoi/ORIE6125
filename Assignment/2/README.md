@@ -11,6 +11,11 @@ All files are stored in /webapp
 * [webapp/heap.py](webapp/heap.py) -- Flask
 
 
+Heroku deployment
+-----------------
+[https://michael-orie6125.herokuapp.com/](https://michael-orie6125.herokuapp.com/)
+
+
 Run the webapp locally
 ----------------------
 
