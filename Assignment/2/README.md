@@ -15,6 +15,14 @@ Heroku deployment
 -----------------
 [https://michael-orie6125.herokuapp.com/](https://michael-orie6125.herokuapp.com/)
 
+Clone my work
+-------------
+
+For bare repository, run the following.
+```
+git clone --bare https://git.heroku.com/michael-orie6125.git
+```
+
 
 Run the webapp locally
 ----------------------
