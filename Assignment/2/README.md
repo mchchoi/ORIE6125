@@ -9,7 +9,7 @@ All files are stored in /webapp
 * [webapp/BinHeap\_Ptr.py](webapp/BinHeap_Ptr.py)  -- implements binary heap in pointer
 * [webapp/test\_BinHeap\_Ptr.py](webapp/test_BinHeap_Ptr.py) -- unit test of binary heap in pointer
 * [webapp/heap.py](webapp/heap.py) -- Flask file to run locally
-* [webapp/heap_heroku.py](webapp/heap_heroku.py) -- Flask file for heroku deployment
+* [webapp/run.py](webapp/run.py) -- Flask file for heroku deployment
 
 Heroku deployment
 -----------------
@@ -26,7 +26,7 @@ python webapp/heap.py
 Unit test for the webapp
 ------------------------
 
-### Test GET/project ###
+### Test GET /project ###
 
 ```
 curl -X GET http://127.0.0.1:5000/project
