@@ -152,7 +152,6 @@ class BinHeap_Ptr:
         for i in range(0,LENGTH):
             heap1.insert(random.randint(0,2*LENGTH))
         end = time.time()
-        #print("Insertion time: %.2f" %(end-start))
         insert_time = end - start
 
         # Time the removal process
@@ -160,7 +159,6 @@ class BinHeap_Ptr:
         for i in range(0,LENGTH):
             heap1.remove()
         end = time.time()
-        #print("Popping time: %.2f" %(end-start))
         remove_time = end - start
         return (insert_time, remove_time)
 
@@ -264,7 +262,6 @@ class BinHeap_Array:
         for i in range(0,LENGTH):
             heap1.insert(random.randint(0,2*LENGTH))
         end = time.time()
-        #print("Insertion time: %.2f" %(end-start))
         insert_time = end - start
 
         # Time the removal process
@@ -272,7 +269,6 @@ class BinHeap_Array:
         for i in range(0,LENGTH):
             heap1.remove()
         end = time.time()
-        #print("Popping time: %.2f" %(end-start))
         remove_time = end - start
         return (insert_time, remove_time)
 
@@ -343,23 +339,31 @@ def heap_peak(name):
 
 @app.route('/heap/time/array', methods=['GET'])
 def heap_timearray():
+
+    # Request LENGTH
     LENGTH = request.args.get('length', type=int)
-    SEED = request.args.get('seed', type=int)
-    #if (not isinstance(LENGTH,int)):
-    #    return "length should be an integer", 400
-    
+    if LENGTH == None or LENGTH <= 0:
+	return "Please enter a valid length!", 400
+   
+    # Request SEED
+    SEED = request.args.get('seed', 100) # Use a default seed of 100
     (insert_time, remove_time) = BinHeap_Array().rand(LENGTH,SEED)
-    return "The insertion time is " + str(insert_time) + '\n' + "The popping time is " + str(remove_time)
+    return "The length is " + str(LENGTH) + ", and the seed is " + str(SEED) + '\n' \
+	   "The insertion time is " + str(insert_time) + '\n' + "The popping time is " + str(remove_time) + '\n'
 
 @app.route('/heap/time/pointer', methods=['GET'])
 def heap_timeptr():
-    LENGTH = request.args.get('length', type=int)
-    SEED = request.args.get('seed', type=int)
-    #if (not isinstance(LENGTH,int)):
-    #    return "length should be an integer", 400
     
-    (insert_time, remove_time) = BinHeap_Ptr().rand(LENGTH,SEED)
-    return "The insertion time is " + str(insert_time) + '\n' + "The popping time is " + str(remove_time)
+    # Request LENGTH
+    LENGTH = request.args.get('length', type=int)
+    if LENGTH == None or LENGTH <= 0:
+        return "Please enter a valid length!", 400
+    
+    # Request SEED
+    SEED = request.args.get('seed', 100) # Use a default seed of 100
+    (insert_time, remove_time) = BinHeap_Array().rand(LENGTH,SEED)
+    return "The length is " + str(LENGTH) + ", and the seed is " + str(SEED) + '\n' \
+	   "The insertion time is " + str(insert_time) + '\n' + "The popping time is " + str(remove_time) + '\n'
 
 if __name__ == "__main__":
     app.run(debug=True)                                          

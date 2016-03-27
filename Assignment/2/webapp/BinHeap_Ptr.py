@@ -1,7 +1,6 @@
-import Queue
 import random
 import time
-import unittest
+import Queue
 
 class Node:
     def __init__(self,data = None,parent = None,left = None,right = None):
@@ -16,16 +15,16 @@ class BinHeap_Ptr:
         self.root = root
         self.size = 0
     
-    """Peek the top element of the heap"""
-    """Raise exception if the heap is empty"""
     def peek(self):
+        """Peek the top element of the heap
+        Raise exception if the heap is empty"""
         if self.size > 0:
             return self.root.data
         else:
             raise Exception
     
-    """Insert element k to the heap"""
     def insert(self,k):
+        """Insert element k to the heap"""
         nnode = Node(k) # Create a new node with data k
         
         # Empty heap
@@ -58,22 +57,22 @@ class BinHeap_Ptr:
         # Heapify after insertion
         self.heapify_insert(nnode)
     
-    """Heapify after insertion of node"""
     def heapify_insert(self,node):
+        """Heapify after insertion of node"""
         while(node.parent != None):
             if (node.parent.data > node.data):
                 self.swap(node.parent,node)
             node = node.parent
     
-    """Swap the data in node1 and node2"""
     def swap(self,node1,node2):
+        """Swap the data in node1 and node2"""
         tmp = node2.data
         node2.data = node1.data
         node1.data = tmp
         
-    """Remove the smallest element in the heap (i.e. the root)"""
-    """Raise exception if the heap is empty"""
     def remove(self):
+        """Remove the smallest element in the heap (i.e. the root)
+        Raise exception if the heap is empty"""
         if self.size > 0:
             rootdata = self.root.data
             if self.size > 1:
@@ -82,9 +81,9 @@ class BinHeap_Ptr:
         else:
             raise Exception
     
-    """Given a node in the heap, return the node which contains smaller data"""
-    """Return None if the node is a leaf"""
     def findminchild(self,node):
+        """Given a node in the heap, return the node which contains smaller data
+        Return None if the node is a leaf"""
         if (node.left == None and node.right == None):
             return None
         elif (node.left == None and node.right != None):
@@ -94,8 +93,8 @@ class BinHeap_Ptr:
         else:
             return node.left if (node.left.data < node.right.data) else node.right
     
-    """Heapify the array after removal of the smallest element"""
     def heapify_remove(self):
+        """Heapify the array after removal of the smallest element"""
         # Find the position of the last node 
         s = "{0:b}".format(self.size)
         findlast = self.root
@@ -125,8 +124,8 @@ class BinHeap_Ptr:
                 self.swap(tmp,minchild)
             tmp = minchild
             
-    """Print heap in array format"""
     def _print(self):
+        """Print heap in array format"""
         q = Queue.Queue()
         q.put(self.root)
         out = []
@@ -139,8 +138,8 @@ class BinHeap_Ptr:
                 q.put(tmp.right)
         return out
     
-    """Time and print the insertion and popping process"""
     def rand(self,LENGTH,SEED):
+        """Time and print the insertion and popping process"""
         random.seed(SEED)
         heap1 = BinHeap_Ptr()
 
@@ -149,48 +148,13 @@ class BinHeap_Ptr:
         for i in range(0,LENGTH):
             heap1.insert(random.randint(0,2*LENGTH))
         end = time.time()
-        print("Insertion time: %.2f" %(end-start))
+        insert_time = end - start
 
         # Time the removal process
         start = time.time()
         for i in range(0,LENGTH):
             heap1.remove()
         end = time.time()
-        print("Popping time: %.2f" %(end-start))
-
-
-class TestBinHeap_Ptr(unittest.TestCase):
-    
-    def runTest(self):
-        self.Testinsert()
-        self.Testremove()
-        #self.Testheapify()
-    
-    def Testinsert(self):
-        heap1 = BinHeap_Ptr()
-        heap1.insert(9)
-        self.assertEqual(heap1.peek(),9)
-        heap1.insert(5)
-        self.assertEqual(heap1.peek(),5)
-        heap1.insert(4)
-        self.assertEqual(heap1.peek(),4)
-        heap1.insert(6)
-        self.assertEqual(heap1.peek(),4)
-        
-    def Testremove(self):
-        heap1 = BinHeap_Ptr()
-        heap1.insert(9)
-        heap1.insert(5)
-        heap1.insert(4)
-        heap1.insert(3)
-        heap1.insert(2)
-        self.assertEqual(heap1.remove(),2)
-        self.assertEqual(heap1.remove(),3)
-        self.assertEqual(heap1.remove(),4)
-        self.assertEqual(heap1.remove(),5)
-        self.assertEqual(heap1.remove(),9)
-
-
-a = TestBinHeap_Ptr()
-suite = unittest.TestLoader().loadTestsFromModule(a)
-unittest.TextTestRunner().run(suite)
+        remove_time = end - start
+        return (insert_time, remove_time)
+                                 
