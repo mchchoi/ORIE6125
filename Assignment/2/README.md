@@ -8,8 +8,8 @@ All files are stored in /webapp
 * [webapp/test\_BinHeap\_Array.py](webapp/BinHeap_Array.py)-- unit test of binary heap in array form
 * [webapp/BinHeap\_Ptr.py](webapp/BinHeap_Ptr.py)  -- implements binary heap in pointer
 * [webapp/test\_BinHeap\_Ptr.py](webapp/test_BinHeap_Ptr.py) -- unit test of binary heap in pointer
-* [webapp/heap.py](webapp/heap.py) -- Flask
-
+* [webapp/heap.py](webapp/heap.py) -- Flask file to run locally
+* [webapp/heap_heroku.py](webapp/heap_heroku.py) -- Flask file for heroku deployment
 
 Heroku deployment
 -----------------
@@ -50,7 +50,7 @@ curl -X GET http://127.0.0.1:5000/heap/2
 curl -X GET http://127.0.0.1:5000/heap/2/peak
 ```
 
-### Test GET /heap/<name>/pop ###
+### Test GET /heap/\<name>/pop ###
 
 ```
 curl -X GET http://127.0.0.1:5000/heap/2/pop
