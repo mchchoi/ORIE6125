@@ -26,6 +26,8 @@ python webapp/heap.py
 Unit test for the webapp
 ------------------------
 
+We can perform the following tests either locally or via Heroku. Replace "http://127.0.0.1:5000/" by "http://michael-orie6125.herokuapp.com/" if we want to test the following on heroku!
+
 ### Test GET /project ###
 
 ```
