@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect
 import random
 import time
 import Queue
@@ -97,6 +97,10 @@ def heap_timeptr():
     (insert_time, remove_time) = BinHeap_Ptr().rand(LENGTH,SEED)
     return "The length is " + str(LENGTH) + ", and the seed is " + str(SEED) + '\n' \
 	   "The insertion time is " + str(insert_time) + '\n' + "The popping time is " + str(remove_time) + '\n'
+
+#@app.route('/git', methods=['GET'])
+#def git_get():
+#    return redirect("https://git.heroku.com/michael-orie6125.git") 
 
 if __name__ == "__main__":
     app.run(debug=True)                                          
