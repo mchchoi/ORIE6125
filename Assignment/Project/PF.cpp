@@ -6,61 +6,49 @@
 
 // boost headers
 #include <boost/random.hpp>
-#include <boost/bind.hpp>
-#include <boost/function.hpp>
 #include <boost/math/distributions.hpp> // import all distributions
-#include <boost/random/uniform_int_distribution.hpp>
 #include <boost/random/normal_distribution.hpp>
 #include <boost/random/mersenne_twister.hpp>
 
-
 using namespace Eigen;
-//using namespace boost::math;
+
 struct PFInputs {
    int N;	// number of particles
    int T;	// number of time steps
    int resample_interval; // resample interval, an integer from [1,T]
    int seed;    // seed of rng 
-
-   VectorXd y;  // size T+1 observations/data from external model (e.g. Kalman filter/time series)
-     
    double g_std; // standard deviation of g
    double f_std; // standard deviation of f
+   VectorXd y;  // size T+1 observations/data from external model (e.g. Kalman filter/time series)
 };
-
 
 class PF
 {
    public:
-      PF(const PFInputs &input);             // simple constructor
-      //PF(const PF &obj);  // copy constructor
-      void run(); // run Particle Filter
-      VectorXd resample(const VectorXd &particles, const VectorXd &weights); // resampling step
-      void propagate(VectorXd &particles, VectorXd &weights, int t);
-      //~PF();                     // destructor
       VectorXd particles; // particle X
       VectorXd weights; // weights
-      
+      PF(const PFInputs &input); // constructor
+      void run(); // run Particle Filter
+      void propagate(VectorXd &particles, VectorXd &weights, int t);
+      VectorXd resample(const VectorXd &particles, const VectorXd &weights); // resampling step
 
    private:
       int N;    // number of particles
       int T;	// number of time steps
       int resample_interval; // resample interval, an integer from [1,T]
-      boost::mt19937 rng; // random number generator
       int seed;
-      VectorXd y;  // size T+1  observations/data from external model (e.g. Kalman filter/time series)
       double g_std; // standard deviation of g
       double f_std; // standard deviation of f
+      VectorXd y;  // size T+1  observations/data from external model (e.g. Kalman filter/time series)
+      boost::mt19937 rng; // random number generator
 };
-
-
 
 // Constructor
 PF::PF(const PFInputs &input) : rng(input.seed)
 {
   N = input.N;
   T = input.T;
-  resample_interval = input.resample_interval; // resample interval, an integer from [1,T]
+  resample_interval = input.resample_interval; 
   seed = input.seed;
   y = input.y;
   g_std = input.g_std;
@@ -70,21 +58,8 @@ PF::PF(const PFInputs &input) : rng(input.seed)
 // Run particle filter
 void PF::run()
 {
-  //VectorXd particles = VectorXd::Zero(N); // particle X
-  //VectorXd weights = VectorXd::Ones(N); // weights
   particles = VectorXd::Zero(N); // particle X
   weights = VectorXd::Ones(N); // weights
-
-  //normal f(0, f_std); // f = q
-  //normal g(0, g_std); // TODO: What is the mean of g?
-
-  //boost::normal_distribution<> f_rng(0, f_std); // sample from f = q
-  
-  // T = 0
-  //for(int i = 0; i < N; i++) {
-  //	particles[i] = f_rng(rng); 
-  //      weights[i] = pdf(g, y[0]);
-  //}
 
   for(int t = 0; t <= T; t++){
        if (resample_interval > 0 && t % resample_interval == 0 && t > 0) {
@@ -97,10 +72,7 @@ void PF::run()
 
        // At t=0 this is just initialization
        propagate(particles, weights, t);
-
-
   }
-
 }
 
 void PF::propagate(VectorXd &particles, VectorXd &weights, int t){
@@ -114,15 +86,11 @@ void PF::propagate(VectorXd &particles, VectorXd &weights, int t){
   weights /= weights.sum();  
 }
 
-
-
-
 VectorXd PF::resample(const VectorXd &particles, const VectorXd &weights)
 {
   VectorXd tmp_particles(N); // initialize updated particles X
   
   // cast weights to a double array tmp
-  //double tmp[N];
   std::vector<double> tmp;
   tmp.resize(N);
   for(int i = 0; i < N; i++){
@@ -130,7 +98,6 @@ VectorXd PF::resample(const VectorXd &particles, const VectorXd &weights)
   }
   
   // sample from weights
-  //boost::random::discrete_distribution<> dist(tmp); 
   boost::random::discrete_distribution<> dist(tmp.begin(), tmp.end());
   for(int i = 0; i < N; i++){
   	 tmp_particles[i] = particles[dist(rng)];
@@ -138,14 +105,6 @@ VectorXd PF::resample(const VectorXd &particles, const VectorXd &weights)
  
   return tmp_particles;
 }
- 
-//PF::PF(const PF &obj)
-//{
-//}
-//
-//PF::~PF(void)
-//{
-//}
 
 double toy_f(double x, int t) {
     return x/2 + 25*x/(1+pow(x,2)) + 8*cos(1.2*t);
@@ -153,6 +112,7 @@ double toy_f(double x, int t) {
 
 int main(){
   using namespace std;
+
   // Inputs to PF
   PFInputs input;
   input.N = 1000;
@@ -168,7 +128,6 @@ int main(){
   VectorXd X = VectorXd::Zero(input.T+1);
   X[0] = f_rng(rng);
   for (int i = 1; i <= input.T; i++) {
-    //X[i] = X[i-1]/2 + 25*X[i-1]/(1+pow(X[i-1],2)) + 8*cos(1.2*i) + f_rng(rng);
     X[i] = toy_f(X[i-1], i) + f_rng(rng);
   }
 
@@ -190,8 +149,8 @@ int main(){
   //cout << pf.weights << endl;
   //cout << "weights sum\n";
   //cout << pf.weights.sum() << endl;
-
-
+  
+  // Predict X_{T+1}
   VectorXd estm(input.N);
   for (int i = 0; i < input.N; i++) {
     estm[i] = toy_f(pf.particles[i], input.T+1) * pf.weights[i];
