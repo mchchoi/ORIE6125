@@ -17,7 +17,8 @@ We also look at Section 2.2 in <sup>2</sup> and Section 1.3 in <sup>3</sup>.
 
 
 
-
+Reference
+---------
 <sup>1</sup>: Cappé, Olivier, Simon J. Godsill, and Eric Moulines. "[An overview of existing methods and recent advances in sequential Monte Carlo.](http://perso.telecom-paristech.fr/~cappe/Publications/Self-archive/06particle-cmg.pdf)" Proceedings of the IEEE 95.5 (2007): 899-924.
 
 <sup>2</sup>: Johansen, Adam M. "[SMCTC: sequential Monte Carlo in C++.](http://wrap.warwick.ac.uk/2194/)" Journal of Statistical Software 30.6 (2009): 1-41.
