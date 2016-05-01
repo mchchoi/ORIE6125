@@ -1,5 +1,6 @@
 #ifndef PF_H
 #define PF_H
+#include "PFInputs.h"
 #include <Eigen/Dense>
 
 // boost headers
@@ -9,16 +10,6 @@
 #include <boost/random/mersenne_twister.hpp>
 
 using namespace Eigen;
-
-struct PFInputs {
-   int N;	// number of particles
-   int T;	// number of time steps
-   int resample_interval; // resample interval, an integer from [1,T]
-   int seed;    // seed of rng 
-   double g_std; // standard deviation of g
-   double f_std; // standard deviation of f
-   VectorXd y;  // size T+1 observations/data from external model (e.g. Kalman filter/time series)
-};
 
 class PF
 {

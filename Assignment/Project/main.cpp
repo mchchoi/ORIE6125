@@ -3,6 +3,7 @@
 #include <cmath>
 
 #include "PF.h"
+#include "PFInputs.h"
 
 double toy_f(double x, int t) {
     return x/2 + 25*x/(1+pow(x,2)) + 8*cos(1.2*t);

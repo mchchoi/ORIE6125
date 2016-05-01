@@ -1,4 +1,5 @@
 #include "PF.h"
+#include "PFInputs.h"
 
 // Constructor
 PF::PF(const PFInputs &input) : rng(input.seed)
