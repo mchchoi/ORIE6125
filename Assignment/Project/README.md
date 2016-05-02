@@ -16,7 +16,7 @@ Unit Test
 ---------
 To test our code, we implement a nonlinear time series model which is frequently used in benchmarking filtering techniques (see e.g. <sup>[1]</sup> Example 1). The time series model is the following:
 
-[[http://latex.codecogs.com/gif.latex?%24%24x_t%20%3D%20%5Cdfrac%7Bx_%7Bt-1%7D%7D%7B2%7D%20&plus;%2025%20%5Cdfrac%7Bx_%7Bt-1%7D%7D%7B1&plus;x_%7Bt-1%7D%5E2%7D%20&plus;%208%20cos%281.2t%29%20&plus;%20u_t%24%24]]
+![image](http://latex.codecogs.com/gif.latex?%24%24x_t%20%3D%20%5Cdfrac%7Bx_%7Bt-1%7D%7D%7B2%7D%20&plus;%2025%20%5Cdfrac%7Bx_%7Bt-1%7D%7D%7B1&plus;x_%7Bt-1%7D%5E2%7D%20&plus;%208%20cos%281.2t%29%20&plus;%20u_t%24%24)
 
 $$y_t = \dfrac{x_t^2}{20} + v_t$$
 
