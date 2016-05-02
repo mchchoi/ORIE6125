@@ -12,6 +12,13 @@ Description of Particle Filter
 Our main reference is Algorithm 3 in <sup>[1]</sup>.
 We also look at Section 2.2 in <sup>[2]</sup> and Section 1.3 in <sup>[3]</sup>.
 
+Description of files
+--------------------
+* [PF.h](PF.h) -- header file of our Particle Filter (PF)
+* [PFInputs.h](PFInputs.h) -- header file of the inputs to PF
+* [PF.cpp](PF.cpp) -- implements PF
+* [main.cpp](main.cpp) -- unit test of PF, see the section below 
+
 Unit Test
 ---------
 To test our code, we implement a nonlinear time series model which is frequently used in benchmarking filtering techniques (see e.g. <sup>[1]</sup> Example 1). The time series model is the following:
@@ -29,8 +36,8 @@ g++ main.cpp PF.cpp
 
 
 
-Reference
----------
+References
+----------
 <sup>[1]</sup>: Cappé, Olivier, Simon J. Godsill, and Eric Moulines. "[An overview of existing methods and recent advances in sequential Monte Carlo.](http://perso.telecom-paristech.fr/~cappe/Publications/Self-archive/06particle-cmg.pdf)" Proceedings of the IEEE 95.5 (2007): 899-924.
 
 <sup>[2]</sup>: Johansen, Adam M. "[SMCTC: sequential Monte Carlo in C++.](http://wrap.warwick.ac.uk/2194/)" Journal of Statistical Software 30.6 (2009): 1-41.
