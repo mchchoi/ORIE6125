@@ -4,6 +4,7 @@
 
 using namespace Eigen;
 
+/* All inputs to PF must be of the form PFInputs */
 struct PFInputs {
    int N;	// number of particles
    int T;	// number of time steps

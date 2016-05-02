@@ -14,13 +14,25 @@ using namespace Eigen;
 class PF
 {
    public:
-      VectorXd particles; // particle X
-      VectorXd weights; // weights
-      PF(const PFInputs &input); // constructor
-      void run(); // run Particle Filter
-      void propagate(VectorXd &particles, VectorXd &weights, int t);
-      VectorXd resample(const VectorXd &particles, const VectorXd &weights); // resampling step
+      /* A public field indicating the position of the particles */
+      VectorXd particles;
 
+      /* A public field indicating the weights of the particles */
+      VectorXd weights;
+
+      /* Constructor of the class from PFInputs */
+      PF(const PFInputs &input);
+
+      /* Run the Particle Filter with desired parameters from PFInputs */
+      void run();
+
+      /* Draw a random sample for each particle at time t and update particles and weights */
+      void propagate(VectorXd &particles, VectorXd &weights, int t); 
+
+      /* Perform the resampling step in PF and return the new position of the particles */
+      VectorXd resample(const VectorXd &particles, const VectorXd &weights); 
+
+   /* Inputs to PF, which are initialized by PFInputs */
    private:
       int N;    // number of particles
       int T;	// number of time steps
