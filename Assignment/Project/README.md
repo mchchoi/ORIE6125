@@ -18,9 +18,9 @@ To test our code, we implement a nonlinear time series model which is frequently
 
 ![image](http://latex.codecogs.com/gif.latex?%24%24x_t%20%3D%20%5Cdfrac%7Bx_%7Bt-1%7D%7D%7B2%7D%20&plus;%2025%20%5Cdfrac%7Bx_%7Bt-1%7D%7D%7B1&plus;x_%7Bt-1%7D%5E2%7D%20&plus;%208%20cos%281.2t%29%20&plus;%20u_t%24%24)
 
-$$y_t = \dfrac{x_t^2}{20} + v_t$$
+![image](http://latex.codecogs.com/gif.latex?y_t%20%3D%20%5Cdfrac%7Bx_t%5E2%7D%7B20%7D%20&plus;%20v_t)
 
-where $$u_t \sim N(0,10)$$ for all t and $$v_t \sim N(0,1)$$ for all t, and the initial distribution is $$x_0 \sim N(0,10)$$. Broadly speaking, $$(y_t)$$ is the series of observable data while $$(x_t)$$ is series of hidden state.
+where u_t ~ N(0,10) for all t and v_t ~ N(0,1) for all t, and the initial distribution is x_0 ~ N(0,10). Broadly speaking, (y_t) is the series of observable data while (x_t) is series of hidden state.
 
 To run the above test case, we can execute
 ```
