@@ -16,7 +16,7 @@ int main(){
   PFInputs input;
   input.N = 1000;
   input.T = 100;
-  input.resample_interval = 5;
+  input.resample_interval = 10;
   input.seed = 123;
   input.g_std = 1;
   input.f_std = sqrt(10);

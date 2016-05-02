@@ -40,8 +40,9 @@ N = 1000, T = 100, seed = 123, g_std = 1, f_std = sqrt(10)
 ```
 and the outputs are the predicted X_{T+1} using PF and the true X_{T+1}.
 
-We would like to investigate the effect of resample_interval in our PF. When resample_interval is set to 0, the predicted X_{T+1} is 
+We would like to investigate the effect of changing resample_interval in our PF, with T = 100. The true X_{T+1} is 6.4517. 
 
+When resample_interval is set to 1, the predicted X_{T+1} is 5.7665, and when the resample_interval is 5, the predicted X_{T+1} is 6.5573. When the resample_interval is 10, the predicted X_{T+1} is 5.9096. It shows that the particle filter performs reasonably well, especially when the resample_interval is set to 5, which yields an error rate of less than 2%!
 
 References
 ----------
