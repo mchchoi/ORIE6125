@@ -27,13 +27,20 @@ To test our code, we implement a nonlinear time series model which is frequently
 
 ![image](http://latex.codecogs.com/gif.latex?y_t%20%3D%20%5Cdfrac%7Bx_t%5E2%7D%7B20%7D%20&plus;%20v_t)
 
-where u_t ~ N(0,10) for all t and v_t ~ N(0,1) for all t, and the initial distribution is x_0 ~ N(0,10). Broadly speaking, (y_t) is the series of observable data while (x_t) is series of hidden state.
+where u_t ~ N(0,10) for all t and v_t ~ N(0,1) for all t, and the initial distribution is x_0 ~ N(0,10). Broadly speaking, (y_t) is the series of observable data while (x_t) is the series of hidden state.
 
 To run the above test case, we can execute
 ```
 g++ main.cpp PF.cpp
 ```
 
+We fix the following parameters in main.cpp:
+```
+N = 1000, T = 100, seed = 123, g_std = 1, f_std = sqrt(10)
+```
+and the outputs are the predicted X_{T+1} using PF and the true X_{T+1}.
+
+We would like to investigate the effect of resample_interval in our PF. When resample_interval is set to 0, the predicted X_{T+1} is 
 
 
 References
