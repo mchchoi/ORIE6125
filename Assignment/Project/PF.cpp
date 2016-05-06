@@ -1,7 +1,7 @@
 #include "PF.h"
 #include "PFInputs.h"
 
-// Constructor
+/* Constructor */
 PF::PF(const PFInputs &input) : rng(input.seed)
 {
   N = input.N;
@@ -13,7 +13,7 @@ PF::PF(const PFInputs &input) : rng(input.seed)
   f_std = input.f_std;
 }
 
-// Run particle filter
+/* Run particle filter */
 void PF::run()
 {
   particles = VectorXd::Zero(N); // particle X
